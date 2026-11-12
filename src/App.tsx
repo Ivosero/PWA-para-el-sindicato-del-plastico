@@ -31,6 +31,7 @@ import {
   CheckCircle2,
   WifiOff,
   Mail,
+  BarChart3,
 } from "lucide-react";
 import {
   configurationError,
@@ -43,6 +44,7 @@ import {
 } from "./data";
 import { Avatar, Empty, LinkButton, Modal, SectionTitle } from "./components";
 import { AttendanceForm, Editor, VacationForm } from "./Forms";
+import Measures from "./Measures";
 import { dateLabel, isOnLeave, normalize, overlaps, today } from "./domain";
 import type {
   Benefit,
@@ -64,6 +66,7 @@ type View =
   | "cobertura"
   | "perfil"
   | "admin"
+  | "medidas"
   | "notificaciones";
 const names: Record<View, string> = {
   inicio: "Mi espacio",
@@ -75,6 +78,7 @@ const names: Record<View, string> = {
   perfil: "Mi perfil",
   admin: "Administración",
   notificaciones: "Notificaciones",
+  medidas: "Medidas gremiales",
 };
 function readView(): View {
   const view = new URLSearchParams(location.search).get("view");
@@ -329,6 +333,7 @@ export default function App() {
     ["agenda", CalendarDays],
     ["beneficios", Heart],
     ["vacaciones", Palmtree],
+    ["medidas", BarChart3],
     ...(manager ? [["cobertura", Building2] as [View, typeof Users]] : []),
     ...(admin ? [["admin", Settings2] as [View, typeof Users]] : []),
   ];
@@ -509,6 +514,7 @@ export default function App() {
           </div>
         )}
         <main id="main-content" key={view}>
+          {view === "medidas" && <Measures key={actor.id} actor={actor} profiles={d.profiles} members={d.members} />}
           {view === "inicio" && (
             <>
               <div className="page-heading">
@@ -724,7 +730,7 @@ export default function App() {
               </div>
             </>
           )}
-          {view !== "inicio" && (
+          {view !== "inicio" && view !== "medidas" && (
             <div className="page-heading">
               <div>
                 <p className="eyebrow">Plástico · GESTIÓN GREMIAL</p>

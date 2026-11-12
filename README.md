@@ -23,6 +23,10 @@ Node.js 22 o superior. `npm ci`, `npm run dev`. `npm run build` compila TypeScri
 
 La muestra es el modo predeterminado. Se cambia de rol desde el selector superior: Delegado/a, Secretaría, Administración. Los datos son ficticios y se guardan únicamente en este navegador, con la clave `plastico-demo-v1`. No cargar datos personales reales. La selección de un rol de muestra no constituye autenticación ni seguridad de producción.
 
+## Medidas gremiales
+
+Los delegados pueden informar personas alcanzadas y adherentes por edificio. Secretaría y Administración crean medidas y consultan porcentajes ponderados, gráficos, edificios pendientes e informe imprimible/PDF y CSV. Un único parte por edificio y medida evita duplicar cargas. La muestra guarda estos datos en el navegador. Ver [uso, metodología, permisos y migración](docs/MEDIDAS-GREMIALES.md).
+
 ## Conexión real
 
 Se conserva el adaptador Supabase de UTI, sus migraciones con permisos RLS y restricciones, y la función de envío de alertas Web Push, en `supabase/`. La muestra publicada no tiene una base real conectada ni envío push real. Para habilitarlo, configurar un proyecto Supabase independiente según `docs/PRODUCCION.md`, desplegar sus migraciones y función, y configurar `VITE_APP_MODE=production`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` y `VITE_VAPID_PUBLIC_KEY`. Nunca reutilizar el padrón ni las credenciales de UTI. Las claves administrativas deben permanecer exclusivamente en el backend.
