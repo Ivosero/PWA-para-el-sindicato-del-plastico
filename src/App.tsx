@@ -32,6 +32,7 @@ import {
   WifiOff,
   Mail,
   BarChart3,
+  ContactRound,
 } from "lucide-react";
 import {
   configurationError,
@@ -45,6 +46,8 @@ import {
 import { Avatar, Empty, LinkButton, Modal, SectionTitle } from "./components";
 import { AttendanceForm, Editor, VacationForm } from "./Forms";
 import Measures from "./Measures";
+import DelegateCards from "./DelegateCards";
+import { whatsappNumber } from "./delegate-card-domain";
 import { dateLabel, isOnLeave, normalize, overlaps, today } from "./domain";
 import type {
   Benefit,
@@ -67,6 +70,7 @@ type View =
   | "perfil"
   | "admin"
   | "medidas"
+  | "tarjetas"
   | "notificaciones";
 const names: Record<View, string> = {
   inicio: "Mi espacio",
@@ -79,6 +83,7 @@ const names: Record<View, string> = {
   admin: "Administración",
   notificaciones: "Notificaciones",
   medidas: "Medidas gremiales",
+  tarjetas: "Tarjetas de delegados",
 };
 function readView(): View {
   const view = new URLSearchParams(location.search).get("view");
@@ -206,6 +211,12 @@ export default function App() {
     if (!actor) return;
     setBusy(true);
     try {
+      if (table === "profiles" && "whatsapp" in row) {
+        const raw = row.whatsapp?.trim() || "";
+        const number = whatsappNumber(raw);
+        if (raw && !number) throw new Error("Ingresá WhatsApp con código de país, comenzando con + y entre 8 y 15 dígitos.");
+        row = { ...row, whatsapp: number ? "+" + number : "" };
+      }
       if (table === "vacations") {
         const v = row as Vacation;
         if (v.end_date < v.start_date)
@@ -334,6 +345,7 @@ export default function App() {
     ["beneficios", Heart],
     ["vacaciones", Palmtree],
     ["medidas", BarChart3],
+    ["tarjetas", ContactRound],
     ...(manager ? [["cobertura", Building2] as [View, typeof Users]] : []),
     ...(admin ? [["admin", Settings2] as [View, typeof Users]] : []),
   ];
@@ -984,6 +996,7 @@ export default function App() {
               </section>
             </>
           )}
+          {view === "tarjetas" && <DelegateCards key={actor.id} actor={actor} profiles={d.profiles} organization={d.settings[0]?.name || "Plástico"} sample={demo} onEdit={()=>setEditor({table:"profiles",row:actor})}/>}
           {view === "cobertura" && manager && <Coverage data={d} />}
           {view === "perfil" && (
             <div className="profile-grid">
@@ -1008,6 +1021,7 @@ export default function App() {
                   <PenLine size={17} />
                   Editar mi información
                 </button>
+                {actor.role === "delegado" && <button className="secondary" onClick={()=>go("tarjetas")}><ContactRound size={17}/>Ver mi tarjeta</button>}
               </section>
               <div>
                 <section className="surface">

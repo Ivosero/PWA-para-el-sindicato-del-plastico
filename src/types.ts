@@ -7,6 +7,7 @@ export type Profile = {
   start_time: string;
   end_time: string;
   phone: string;
+  whatsapp?: string;
   active: boolean;
 };
 export type Member = {

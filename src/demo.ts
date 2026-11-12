@@ -14,6 +14,7 @@ export const createDemo = (): Data => ({
       start_time: "08:00",
       end_time: "15:00",
       phone: "11 5550 0101",
+      whatsapp: "+5491155500101",
       active: true,
     },
     {
@@ -24,6 +25,7 @@ export const createDemo = (): Data => ({
       start_time: "09:00",
       end_time: "17:00",
       phone: "11 5550 0102",
+      whatsapp: "+5491155500102",
       active: true,
     },
     {
@@ -34,6 +36,7 @@ export const createDemo = (): Data => ({
       start_time: "09:00",
       end_time: "17:00",
       phone: "11 5550 0100",
+      whatsapp: "+5491155500100",
       active: true,
     },
     ...[
@@ -51,6 +54,7 @@ export const createDemo = (): Data => ({
       start_time: i % 2 ? "10:00" : "08:00",
       end_time: i % 2 ? "17:00" : "15:00",
       phone: `11 5550 010${i + 3}`,
+      whatsapp: `+549115550010${i + 3}`,
       active: true,
     })),
   ],

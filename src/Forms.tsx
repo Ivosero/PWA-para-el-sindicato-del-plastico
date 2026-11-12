@@ -68,6 +68,7 @@ const fields: Partial<Record<Table, Field[]>> = {
     { key: "start_time", label: "Hora de ingreso", type: "time" },
     { key: "end_time", label: "Hora de salida", type: "time" },
     { key: "phone", label: "Teléfono", type: "tel" },
+    { key: "whatsapp", label: "WhatsApp con código de país", type: "tel", optional: true },
   ],
 };
 export function Editor({

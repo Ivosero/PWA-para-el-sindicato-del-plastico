@@ -29,6 +29,8 @@ Los delegados pueden informar personas alcanzadas y adherentes por edificio. Sec
 
 ## Conexión real
 
+Las tarjetas de delegados se generan como imágenes PNG con QR de contacto de WhatsApp. Se comparten mediante el menú nativo de archivos o se descargan para adjuntarlas. Ver [uso, compatibilidad y migración](docs/TARJETAS-DELEGADOS.md).
+
 Se conserva el adaptador Supabase de UTI, sus migraciones con permisos RLS y restricciones, y la función de envío de alertas Web Push, en `supabase/`. La muestra publicada no tiene una base real conectada ni envío push real. Para habilitarlo, configurar un proyecto Supabase independiente según `docs/PRODUCCION.md`, desplegar sus migraciones y función, y configurar `VITE_APP_MODE=production`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` y `VITE_VAPID_PUBLIC_KEY`. Nunca reutilizar el padrón ni las credenciales de UTI. Las claves administrativas deben permanecer exclusivamente en el backend.
 
 La política CSP debe autorizar los orígenes HTTPS y WSS exactos del nuevo Supabase al conectar ese entorno. El CSP actual permite únicamente el origen propio, adecuado para la muestra.

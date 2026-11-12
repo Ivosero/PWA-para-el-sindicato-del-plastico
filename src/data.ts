@@ -20,6 +20,12 @@ function local(): Data {
   } catch {
     memory = createDemo();
   }
+  // Upgrade only untouched fictitious profiles from previous sample versions.
+  const defaults = createDemo().profiles;
+  memory!.profiles = memory!.profiles.map((profile) => {
+    const seed = defaults.find((p) => p.id === profile.id && p.phone === profile.phone);
+    return { ...profile, whatsapp: profile.whatsapp ?? seed?.whatsapp ?? "" };
+  });
   return memory!;
 }
 export async function loadData(userId: string): Promise<Data> {

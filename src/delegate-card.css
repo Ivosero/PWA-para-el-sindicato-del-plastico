@@ -1,0 +1,265 @@
+.delegate-cards {
+  max-width: 1160px;
+}
+.delegate-picker {
+  max-width: 580px;
+  margin: 25px 0;
+}
+.delegate-card-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 35px;
+  align-items: start;
+  margin-top: 28px;
+}
+.delegate-contact-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 23px;
+  border: 1px solid #bdd3ff42;
+  padding: 32px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #9e64cb88, transparent 60%),
+    linear-gradient(140deg, #245fc5, #314c9c 57%, #236762);
+  box-shadow: 0 20px 55px #09172e40;
+}
+.delegate-contact-card:after {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  border: 1px solid #c6dcff24;
+  border-radius: 50%;
+  right: -170px;
+  top: 100px;
+  pointer-events: none;
+}
+.delegate-card-brand {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.delegate-card-brand > img {
+  width: 50px;
+  height: 60px;
+  object-fit: contain;
+  background: white;
+  padding: 7px;
+  border-radius: 10px;
+}
+.delegate-card-brand strong {
+  font-family: "Manrope Variable", sans-serif;
+  font-size: 29px;
+  letter-spacing: -1px;
+}
+.delegate-card-brand small {
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-top: 5px;
+  color: #d0e0ff;
+}
+.delegate-card-symbol {
+  margin-left: auto;
+  color: #c1e6f8;
+}
+.delegate-card-role {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #b9f1cb;
+  margin: 34px 0 12px;
+}
+.delegate-contact-card h2 {
+  font-size: 31px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  overflow-wrap: anywhere;
+  position: relative;
+  z-index: 1;
+}
+.delegate-contact-card dl {
+  display: grid;
+  gap: 23px;
+  margin: 0;
+}
+.delegate-contact-card dt {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #c6d9fa;
+}
+.delegate-contact-card dd {
+  font-size: 16px;
+  margin: 9px 0 0 26px;
+  color: #f3f8ff;
+  overflow-wrap: anywhere;
+}
+.delegate-card-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border-top: 1px solid #d4e6ff36;
+  padding-top: 20px;
+  margin-top: 30px;
+  color: #bce5df;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+.delegate-share-panel {
+  padding: 12px 0;
+}
+.delegate-share-panel h2 {
+  font-size: 28px;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin: 15px 0;
+}
+.delegate-share-panel p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.delegate-share-panel > .button {
+  display: flex;
+  margin: 14px 0;
+  justify-content: center;
+  max-width: 340px;
+}
+.whatsapp-share {
+  background: linear-gradient(110deg, #81e8b3, #a1f3bf);
+  color: #123d2c;
+}
+.delegate-share-panel > .text-button {
+  justify-content: flex-start;
+  padding-left: 0;
+}
+.delegate-share-panel > .secondary {
+  display: flex;
+  margin-top: 12px;
+}
+.delegate-share-panel .delegate-share-note {
+  font-size: 10px;
+  color: #a2bad5;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 25px;
+}
+.card-missing {
+  background: #edc98c14;
+  border: 1px solid #edc98c25;
+  color: #eed5ad;
+  padding: 14px;
+  border-radius: 9px;
+}
+.delegate-contact-card a {
+  color: inherit;
+}
+@media (max-width: 1050px) {
+  .delegate-card-layout {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 660px;
+  }
+  .delegate-share-panel {
+    padding: 0;
+  }
+  .delegate-share-panel > .button {
+    max-width: none;
+  }
+  .delegate-share-panel h2 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 680px) {
+  .delegate-contact-card {
+    padding: 24px 21px;
+    border-radius: 19px;
+  }
+  .delegate-card-brand strong {
+    font-size: 25px;
+  }
+  .delegate-card-brand small {
+    font-size: 6px;
+  }
+  .delegate-card-brand > img {
+    width: 43px;
+    height: 53px;
+  }
+  .delegate-contact-card h2 {
+    font-size: 27px;
+  }
+  .delegate-contact-card dd {
+    font-size: 15px;
+  }
+  .delegate-card-foot {
+    font-size: 6px;
+    line-height: 1.8;
+    flex-wrap: wrap;
+  }
+  .delegate-card-role {
+    font-size: 8px;
+  }
+  .delegate-card-layout {
+    gap: 25px;
+  }
+  .delegate-share-panel .eyebrow {
+    font-size: 8px;
+  }
+  .delegate-picker select {
+    font-size: 12px;
+  }
+}
+.profile-card > button + button {
+  margin-top: 12px;
+}
+.sidebar nav {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+}
+.sidebar-bottom,
+.sidebar .brand {
+  flex-shrink: 0;
+}
+.delegate-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 55px #09172e40;
+}
+.delegate-image-preview {
+  max-width: 500px;
+  width: 100%;
+  min-width: 0;
+}
+.delegate-share-panel > button {
+  display: flex;
+  margin: 14px 0;
+  width: 100%;
+  max-width: 360px;
+}
+.delegate-share-panel .delegate-share-explainer {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #aac5df;
+}
+.delegate-card-layout {
+  align-items: start;
+}
+.delegate-share-panel .text-button {
+  justify-content: center;
+}
+@media (max-width: 1050px) {
+  .delegate-card-layout {
+    max-width: 620px;
+  }
+  .delegate-image-preview {
+    max-width: 460px;
+    margin: auto;
+  }
+  .delegate-share-panel > button {
+    max-width: none;
+  }
+}
