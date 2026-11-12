@@ -1,0 +1,12 @@
+services:
+  plastico:
+    build:
+      context: ..
+      args:
+        VITE_APP_MODE: ${VITE_APP_MODE:-production}
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+        VITE_VAPID_PUBLIC_KEY: ${VITE_VAPID_PUBLIC_KEY}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"

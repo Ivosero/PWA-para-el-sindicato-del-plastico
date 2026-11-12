@@ -1,31 +1,38 @@
-# Plástico · Nuestro espacio
+# Plástico · Espacio gremial
 
-Muestra de PWA para el Sindicato del Plástico, inspirada funcionalmente en UTI y con identidad visual propia. Logos originales de UOYEP y CFP preservados, tipografía local, azul intenso, lima y acentos cálidos. Proyecto independiente: no modifica el campus existente ni UTI.
+PWA de gestión gremial para delegados/as, secretarios/as gremiales y administración del Sindicato del Plástico. Adaptación directa del código de UTI: conserva su lógica, formularios, validaciones y permisos. Identidad propia con logos UOYEP/CFP, fondos profundos y degradados azul, verde y violeta. No es un campus educativo.
 
-## Desarrollo
+Muestra: https://pwa-para-el-sindicato-del-plastico.vercel.app/
+Repositorio: https://github.com/Ivosero/PWA-para-el-sindicato-del-plastico
 
-Node.js 22 o superior. `npm ci`, `npm run dev`. Para compilar: `npm run build`. Para verificar: `npm test` (requiere Chromium de Playwright: `npx playwright install chromium`).
+## Funciones equivalentes a UTI
 
-## Alcance de la muestra
+- Padrón: búsqueda sin acentos, filtros, fichas completas y paginación. Administración puede crear, editar y eliminar registros.
+- Convocatorias: Secretaría y Administración publican, editan y eliminan. Delegados confirman asistencia o justifican ausencia; Secretaría consulta respuestas.
+- Vacaciones: declaración, cancelación y validación de superposiciones. Cada delegado consulta las propias.
+- Cobertura por edificio: disponible para Secretaría y Administración; refleja horarios y vacaciones.
+- Beneficios e información: consulta y administración de contenidos.
+- Perfil: edificio, horario y teléfono editables; administración de roles y cuentas activas.
+- Notificaciones de convocatorias, estado de conexión, instalación y uso offline de la muestra.
 
-- Inicio, tres aulas con recorridos breves, búsqueda y progreso local.
-- Agenda ficticia de noviembre 2026, interés reversible y exportación de calendario.
-- Presentación de categorías de beneficios y credencial explícitamente sin validez.
-- Navegación móvil, instalación PWA y shell sin conexión después de una primera visita completa.
-- Ayuda, notificaciones e información del perfil ficticio.
+La marca CFP se conserva como parte de los logos solicitados; no se incluyen aulas ni cursos.
 
-Todos los nombres, actividades y contenidos académicos son demostrativos. No hay autenticación, afiliación real, inscripciones enviadas, descuentos vigentes, emisión de certificados ni conexión al LMS. El avance y el interés se guardan únicamente en este navegador, sin compartirlos con otros dispositivos. No ingresar datos personales reales.
+## Ejecutar y verificar
 
-## Arquitectura y publicación
+Node.js 22 o superior. `npm ci`, `npm run dev`. `npm run build` compila TypeScript y genera la aplicación con caché PWA versionada. `npm test` ejecuta Playwright; requiere `npx playwright install chromium`.
 
-React + TypeScript estricto + Vite. Íconos Lucide, fuente DM Sans local, sin APIs externas ni secretos. Esta muestra visual es separada del monolito educativo Next/Nest del sindicato. No se modifican bases de datos ni Docker. Para convertirla en un servicio real hace falta integrar autenticación y permisos del backend, registros de afiliación, contenidos y convenios validados.
+La muestra es el modo predeterminado. Se cambia de rol desde el selector superior: Delegado/a, Secretaría, Administración. Los datos son ficticios y se guardan únicamente en este navegador, con la clave `plastico-demo-v1`. No cargar datos personales reales. La selección de un rol de muestra no constituye autenticación ni seguridad de producción.
 
-GitHub: https://github.com/Ivosero/PWA-para-el-sindicato-del-plastico
+## Conexión real
 
-Muestra publicada: https://pwa-para-el-sindicato-del-plastico.vercel.app/
+Se conserva el adaptador Supabase de UTI, sus migraciones con permisos RLS y restricciones, y la función de envío de alertas Web Push, en `supabase/`. La muestra publicada no tiene una base real conectada ni envío push real. Para habilitarlo, configurar un proyecto Supabase independiente según `docs/PRODUCCION.md`, desplegar sus migraciones y función, y configurar `VITE_APP_MODE=production`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` y `VITE_VAPID_PUBLIC_KEY`. Nunca reutilizar el padrón ni las credenciales de UTI. Las claves administrativas deben permanecer exclusivamente en el backend.
 
-Proyecto Vercel vinculado a `main`: los próximos pushes publican automáticamente. Build local aprobado y 3 pruebas E2E aprobadas el 11 de noviembre de 2026. Publicación en producción confirmada en Vercel y portada comprobada en la dirección pública.
+La política CSP debe autorizar los orígenes HTTPS y WSS exactos del nuevo Supabase al conectar ese entorno. El CSP actual permite únicamente el origen propio, adecuado para la muestra.
 
-Vercel: importar este repositorio, framework Vite, build `npm run build`, salida `dist`. No requiere variables de entorno. `vercel.json` configura encabezados de seguridad y evita cachear permanentemente el service worker.
+## Publicación
 
-Pruebas E2E: progreso persistente, filtros, agenda reversible y descarga de calendario, ausencia de desbordes en 360/390/768/1024/1440, navegación móvil y funcionamiento offline. Capturas en `evidence/`.
+Vercel vinculado a `main`; cada push despliega automáticamente. Framework Vite, `npm run build`, salida `dist`. Para la muestra no hacen falta variables de entorno. Logos locales, fuentes locales y sin servicios de IA. No se modificó el proyecto UTI original ni el campus educativo del sindicato.
+
+## Verificación
+
+Se reutilizan las siete pruebas funcionales de UTI: padrón y perfil, asistencia justificada, vacaciones y cobertura, publicación con notificaciones, edición administrativa, navegación móvil y uso offline. Una prueba adicional recorre las vistas de cada rol en 360, 390, 768, 1024 y 1440 píxeles. Las capturas de escritorio y celular se guardan en `evidence/`.
