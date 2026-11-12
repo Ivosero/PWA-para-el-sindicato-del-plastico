@@ -22,6 +22,10 @@ React + TypeScript estricto + Vite. Íconos Lucide, fuente DM Sans local, sin AP
 
 GitHub: https://github.com/Ivosero/PWA-para-el-sindicato-del-plastico
 
+Muestra publicada: https://pwa-para-el-sindicato-del-plastico.vercel.app/
+
+Proyecto Vercel vinculado a `main`: los próximos pushes publican automáticamente. Build local aprobado y 3 pruebas E2E aprobadas el 11 de noviembre de 2026. Publicación en producción confirmada en Vercel y portada comprobada en la dirección pública.
+
 Vercel: importar este repositorio, framework Vite, build `npm run build`, salida `dist`. No requiere variables de entorno. `vercel.json` configura encabezados de seguridad y evita cachear permanentemente el service worker.
 
 Pruebas E2E: progreso persistente, filtros, agenda reversible y descarga de calendario, ausencia de desbordes en 360/390/768/1024/1440, navegación móvil y funcionamiento offline. Capturas en `evidence/`.
